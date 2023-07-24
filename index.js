@@ -27,12 +27,15 @@ const express = require('express'),
   fileUpload = require("express-fileupload"),
   fetch = require('node-fetch'),
   cheerio = require('cheerio'),
+  fs = require('fs'),
   path = require('path');
 
 let { createClient } = require('@supabase/supabase-js');
 const { unlink } = require('fs');
 
 
+if (!fs.existsSync(__dirname + "/docs/")){
+  fs.mkdirSync(__dirname + "/docs/");
 
 //console.log(SUPABASE_URL, SUPABASE_KEY)
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -190,7 +193,7 @@ console.log(req.body.key, SECRET_KEY)
 })
 
 app.post('/uploadFile', async (req, res) => {
-console.log(req.body.key, SECRET_KEY)
+
   if (!req.body) return res.sendStatus(400)
   if (!req.body.key || req.body.key != SECRET_KEY) return res.sendStatus(401)
 
