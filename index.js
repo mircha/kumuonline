@@ -36,7 +36,7 @@ const { unlink } = require('fs');
 
 if (!fs.existsSync(__dirname + "/docs/")){
   fs.mkdirSync(__dirname + "/docs/");
-
+}
 //console.log(SUPABASE_URL, SUPABASE_KEY)
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
 
