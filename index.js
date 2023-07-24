@@ -176,6 +176,7 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(fileUpload());
 app.use('/assets', express.static(path.join(__dirname, 'html/assets')))
+app.use('/assets', express.static(path.join(__dirname, 'docs')))
 app.get('/', (req, res) => { res.sendFile(path.join(__dirname + '/html/index.html')); })
 
 app.post('/ask', async (req, res) => {
